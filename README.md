@@ -56,10 +56,8 @@ kotlin.incremental=false
 ## 2、基础入门
 启用 DataBinding 后，这里先来看下如何在布局文件中绑定指定的变量
 ### 1、xml文件生成data标签
-打开布局文件，选中根布局的 ViewGroup，按住 Alt + 回车键，点击 “Convert to data binding layout”，就可以生成 DataBinding 需要的布局规则
-
 ![image](http://note.youdao.com/yws/public/resource/fc6b701fcc36c032670d422e1a3c6889/xmlnote/21E7A7B74134450D84F7A5E1DB236B36/43136)
-
+打开布局文件，选中根布局的 ViewGroup，按住 Alt + 回车键，点击 “Convert to data binding layout”，就可以生成 DataBinding 需要的布局规则
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
