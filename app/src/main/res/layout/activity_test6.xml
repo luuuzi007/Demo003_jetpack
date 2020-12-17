@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.example.demo003_databing.util.ImageUtils"/>
+        <import type="com.example.demo003_databing.Test6Activity.Handler"/>
+        <variable
+            name="images"
+            type="ImageUtils" />
+        <variable
+            name="handler"
+            type="Handler" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/ic_launcher_background" />
+<!--        bind:url="@{images.url}"-->
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="3dp"
+            android:onClick="@{()->handler.onClick(images)}"
+            android:text='@{"改变图片url"}'/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

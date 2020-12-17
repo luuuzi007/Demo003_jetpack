@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.example.demo003_databing.util.ImageUtils" />
+
+        <import type="com.example.demo003_databing.Test7Activity.HandlerOnclick" />
+
+        <variable
+            name="image"
+            type="ImageUtils" />
+
+        <variable
+            name="hd"
+            type="HandlerOnclick" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <!--绑定属性：aaa bind:url和@BindingAdapter("aaa")的值对应-->
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:src="@drawable/ic_launcher_background"
+            bind:aaa="@{image.url}" />
+        <!--覆盖原生属性：android:text，对应的属性值必须为'@{"XXX"}'这种格式才有效-->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="3dp"
+            android:onClick="@{()->hd.onClick(image)}"
+            android:text='@{"改变uri"}' />
+        <!--        BindingConversion-->
+        <!--        数据转换-->
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="3dp"
+            android:text='@{"XXX"}' />
+
+        <!--        类型转换
+        background使用：conversionType
+        textColor使用：conversionType-->
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background='@{"红色"}'
+            android:padding="20dp"
+            android:text="红色背景蓝色字"
+            android:textColor='@{"蓝色"}' />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background='@{"蓝色"}'
+            android:padding="20dp"
+            android:text="蓝色背景红色字"
+            android:textColor='@{"红色"}' />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

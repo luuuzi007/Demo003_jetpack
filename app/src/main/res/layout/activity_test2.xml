@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <!--Baseobservable-->
+        <import type="com.example.demo003_databing.model.Goods" />
+
+        <import type="com.example.demo003_databing.Test2Activity.ClickHandler" />
+
+        <variable
+            name="goods"
+            type="Goods" />
+
+        <variable
+            name="click"
+            type="ClickHandler" />
+        <!--        ObservableField-->
+        <import type="com.example.demo003_databing.model.ObservableGoods" />
+
+        <import type="com.example.demo003_databing.Test2Activity.ClickHandler2" />
+
+        <variable
+            name="observableGoods"
+            type="ObservableGoods" />
+
+        <variable
+            name="click2"
+            type="ClickHandler2" />
+
+        <!--        ObservableCollection-->
+        <import type="androidx.databinding.ObservableArrayList" />
+
+        <import type="androidx.databinding.ObservableMap" />
+
+        <variable
+            name="list"
+            type="ObservableArrayList&lt;String&gt;" />
+
+        <variable
+            name="map"
+            type="ObservableMap&lt;String,String&gt;" />
+
+        <variable
+            name="index"
+            type="int" />
+
+        <variable
+            name="key"
+            type="String" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_name"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@{goods.name}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_details"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@{goods.details}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_price"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@{String.valueOf(goods.price)}" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:onClick="@{()->click.clickName()}"
+                android:text="修改name" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:onClick="@{()->click.clickDetails()}"
+                android:text="修改details属性(所有属性)" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="======分割线==========" />
+<!--==================================-->
+            <!--ObservableField-->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_name2"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@{observableGoods.name2}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_details2"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@{observableGoods.details2}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_price2"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@{String.valueOf(observableGoods.price2)}" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:onClick="@{()->click2.clickName()}"
+                android:text="修改name" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:onClick="@{()->click2.clickDetails()}"
+                android:text="修改details属性(所有属性)" />
+
+<!--==================================-->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="======分割线ObservableCollection==========" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@{list[index],default=测试list}"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@{map[key],default=测试map}"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_modify3"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="ObservableCollection修改"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </ScrollView>
+</layout>

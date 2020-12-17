@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <import type="com.example.demo003_databing.model.User"/>
+        <import type="com.example.demo003_databing.Test4Activity.UserPresenterClick"/>
+        <import type="com.example.demo003_databing.util.StringUtils"/>
+        <variable
+            name="users"
+            type="User" />
+        <variable
+            name="userClick"
+            type="UserPresenterClick" />
+
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@{users.name}"
+            android:onClick="@{()->userClick.onUserNameClick(users)}"
+            android:layout_marginTop="1dp"
+            android:background="#ccc"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@{users.password}"
+            android:layout_marginTop="1dp"
+            android:background="#ccc"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:afterTextChanged="@{userClick.ofterTextChange}"
+            android:hint="用戶名" />
+<!--        -->
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:afterTextChanged="@{userClick.ofterUserpasswordChange}"
+            android:hint="密码"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@{StringUtils.UpperCase(users.name)}"
+            android:onClick="@{()->userClick.onUserNameClick(users)}"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

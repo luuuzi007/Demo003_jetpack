@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="com.example.demo003_databing.model.User" />
+
+        <import type="com.example.demo003_databing.model.Goods" />
+
+        <variable
+            name="userInfo"
+            type="User" />
+
+        <variable
+            name="good"
+            type="Goods" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="测试include" />
+        <!--只有绑定了变量，include布局才能使用到对应的参数-->
+        <!--        <include-->
+        <!--            layout="@layout/layout_view"-->
+        <!--            bind:userInfo="@{userInfo}"-->
+        <!--            bind:good="@{good}"/>-->
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="viewstub可见性" />
+        <ViewStub
+            android:id="@+id/view_stub"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout="@layout/layout_stub" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>
