@@ -55,6 +55,13 @@
         android:layout_marginTop="3dp"
         android:background="#ccc"
         android:text="bindingAdapter" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv7"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="3dp"
+        android:background="#ccc"
+        android:text="mvvm实现一个图片查看器"/>
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

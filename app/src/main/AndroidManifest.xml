@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.demo003_databing">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -23,6 +24,7 @@
         <activity android:name=".Test5Activity" />
         <activity android:name=".Test6Activity" />
         <activity android:name=".Test7Activity" />
+        <activity android:name=".Test8Activity" />
     </application>
 
 </manifest>

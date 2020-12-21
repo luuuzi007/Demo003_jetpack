@@ -21,20 +21,21 @@ class MainActivity:AppCompatActivity(), View.OnClickListener {
         tv4.setOnClickListener(this)
         tv5.setOnClickListener(this)
         tv6.setOnClickListener(this)
+        tv7.setOnClickListener(this)
 
     }
 
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.tv1->startActivity(
-                Intent(this@MainActivity,Test1Activity::class.java).let{
-                    it.putExtra("aaa","好的")
-                })
+                Intent(this@MainActivity,Test1Activity::class.java).putExtra("aaa","好的")
+            )
             R.id.tv2->startActivity(Intent(this@MainActivity,Test3Activity::class.java))
             R.id.tv3->startActivity(Intent(this@MainActivity,Test4Activity::class.java))
             R.id.tv4->startActivity(Intent(this@MainActivity,Test5Activity::class.java))
             R.id.tv5->startActivity(Intent(this@MainActivity,Test6Activity::class.java))
             R.id.tv6->startActivity(Intent(this@MainActivity,Test7Activity::class.java))
+            R.id.tv7->startActivity(Intent(this@MainActivity,Test8Activity::class.java))
         }
     }
 }
