@@ -22,6 +22,7 @@ class MainActivity:AppCompatActivity(), View.OnClickListener {
         tv5.setOnClickListener(this)
         tv6.setOnClickListener(this)
         tv7.setOnClickListener(this)
+        tv8.setOnClickListener(this)
 
     }
 
@@ -36,6 +37,7 @@ class MainActivity:AppCompatActivity(), View.OnClickListener {
             R.id.tv5->startActivity(Intent(this@MainActivity,Test6Activity::class.java))
             R.id.tv6->startActivity(Intent(this@MainActivity,Test7Activity::class.java))
             R.id.tv7->startActivity(Intent(this@MainActivity,Test8Activity::class.java))
+            R.id.tv8->startActivity(Intent(this@MainActivity,Test9Activity::class.java))
         }
     }
 }

@@ -14,6 +14,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="3dp"
         android:background="#ccc"
+        android:gravity="center"
         android:text="单项数据绑定" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -22,6 +23,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="3dp"
         android:background="#ccc"
+        android:gravity="center"
         android:text="双向数据绑定" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -30,6 +32,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="3dp"
         android:background="#ccc"
+        android:gravity="center"
         android:text="事件绑定" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -38,6 +41,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="3dp"
         android:background="#ccc"
+        android:gravity="center"
         android:text="include和viewstub" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -46,6 +50,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="3dp"
         android:background="#ccc"
+        android:gravity="center"
         android:text="其他属性" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -54,14 +59,26 @@
         android:layout_height="50dp"
         android:layout_marginTop="3dp"
         android:background="#ccc"
+        android:gravity="center"
         android:text="bindingAdapter" />
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv7"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="3dp"
         android:background="#ccc"
-        android:text="mvvm实现一个图片查看器"/>
+        android:gravity="center"
+        android:text="LiveData" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv8"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="3dp"
+        android:background="#ccc"
+        android:gravity="center"
+        android:text="mvvm实现一个图片查看器" />
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

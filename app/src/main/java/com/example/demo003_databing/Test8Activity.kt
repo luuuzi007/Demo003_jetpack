@@ -1,71 +1,54 @@
 package com.example.demo003_databing
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.AppCompatImageView
-import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import com.bumptech.glide.Glide
+import androidx.lifecycle.*
 import com.example.demo003_databing.databinding.ActivityTest8Binding
-import com.example.demo003_databing.mvvm.Data
-import com.example.demo003_databing.mvvm.Image
-import com.example.demo003_databing.mvvm.ImageViewModel
-
+import kotlin.random.Random
 
 /**
  * @author: Luuuzi
- * @date: 2020-12-21
- * @description:mvvm实现列表 view层
+ * @date: 2020-12-22
+ * @description:
  */
 class Test8Activity : AppCompatActivity() {
-    lateinit var dataBindingUtil: ActivityTest8Binding
-    lateinit var imageViewModel: ImageViewModel
+    lateinit var mTextViewModel: TextViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //1、初始化databinding：实现数据和view的绑定
-        dataBindingUtil = DataBindingUtil.setContentView(this, R.layout.activity_test8)
-        dataBindingUtil.click = Test8Click()
-        //2、初始化viewmodel:获取数据，实现与数据层的解耦
-        imageViewModel =
+        val mDataBinding =
+            DataBindingUtil.setContentView<ActivityTest8Binding>(this, R.layout.activity_test8)
+        mDataBinding.click = Test8Click()
+        //创建viewmodel
+
+        mTextViewModel =
             ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(application))
-                .get(ImageViewModel::class.java)
-        //viewmodel获取到数据监听
-        imageViewModel.mImage.observe(this, object : Observer<Data<Image>> {
-            override fun onChanged(t: Data<Image>?) {
-                if (t?.mErrorMsg != null) {//加载错误提示
-                    Toast.makeText(this@Test8Activity, t.mErrorMsg, Toast.LENGTH_SHORT).show()
-                    return
+                .get(TextViewModel::class.java)
+        //添加监听LiveData对象mDataEvent中的数据是否改变
+        mTextViewModel.mDataEvent.observe(this,
+            Observer<String> { t ->
+                //更新ui
+                mDataBinding.tvData.text = t
+            })
+
+    }
+
+    inner class Test8Click() {
+        fun click() {
+            object : Thread() {
+                //模拟子线程获取数据
+                override fun run() {
+                    val nextInt = Random.nextInt(100)
+//                    mTextViewModel.mDataEvent.value = "内容：$nextInt"//此方法只能在主线程调用(这里调用会报错：Cannot invoke setValue on a background thread）
+                    mTextViewModel.mDataEvent.postValue("内容：$nextInt")
                 }
-                //设置最新数据
-                dataBindingUtil.imageBean = t?.mData
-            }
-        })
-    }
-
-    inner class Test8Click {
-        fun loadImag() {
-            imageViewModel.loadImag()
-        }
-
-        fun nextImage() {
-            imageViewModel.nextImage()
-        }
-
-        fun previousImages() {
-            imageViewModel.previousImages()
+            }.start()
         }
     }
-}
 
-/**
- * 自定义属性
- */
-@BindingAdapter("url")
-fun loadImage(iv: AppCompatImageView, url: String) {
-    Glide.with(iv.context)
-        .load(url)
-        .into(iv)
+    //viewmodel
+    class TextViewModel : ViewModel() {
+        //创建livedata
+        var mDataEvent: MutableLiveData<String> = MutableLiveData()
+    }
 }
