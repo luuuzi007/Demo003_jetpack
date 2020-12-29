@@ -79,6 +79,14 @@
         android:background="#ccc"
         android:gravity="center"
         android:text="mvvm实现一个图片查看器" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv9"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="3dp"
+        android:text="Android KTX"
+        android:gravity="center"
+        android:background="#ccc"/>
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>
