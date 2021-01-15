@@ -27,6 +27,8 @@
         <activity android:name=".Test7Activity" />
         <activity android:name=".Test9Activity" />
         <activity android:name=".Test8Activity" />
+        <activity android:name="com.example.demo003_jetpack.Test11Activity" />
+        <activity android:name="com.example.demo003_jetpack.Test12Activity" />
     </application>
 
 </manifest>
