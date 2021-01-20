@@ -2,6 +2,7 @@
 buildscript {
     ext.kotlin_version = "1.3.72"
     repositories {
+//        maven {url 'https://maven.google.com' }//添加moven
         google()
         jcenter()
     }
