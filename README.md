@@ -1,4 +1,4 @@
-[TOC]
+# jetpack组件使用
 
 # databing概述
 DataBinding 是谷歌官方发布的一个框架，顾名思义即为数据绑定，是 MVVM 模式在 Android 上的一种实现，用于降低布局和代码逻辑之间的耦合性，使代码逻辑更加清晰。MVVM 相对于 MVP，其实就是将 Presenter 层替换成了 ViewModel 层。DataBinding 能够省去我们一直以来的 findViewById() 步骤，大量减少 Activity 内的代码，数据能够单向或双向绑定到 layout 文件中，有助于防止内存泄漏，而且能自动进行空检测以避免空指针异常
@@ -7,7 +7,7 @@ DataBinding 是谷歌官方发布的一个框架，顾名思义即为数据绑�
 配置你的应用程序使用数据绑定，在应用程序模块 (app module) 的 build.gradle 文件添加数据绑定元素，需要注意的是 Android Studio 的版本需要在 1.3 以上
 ### 1.java项目
 #### 1.app/build.gradle
-```
+```java
 android {
     ....
     //启动dataBinding
@@ -20,7 +20,7 @@ android {
 Kotlin 里面想用 DataBinding 必须要加上 kotlin-kapt插件，也就是 kotlin 的 apt ，kotlin-kapt 的版本号最好跟着 geadle 一起走
 #### 1.Project/build.gradle
 
-```
+```java
 buildscript {
     ext.kotlin_version = "1.3.72"
     repositories {
@@ -40,7 +40,7 @@ buildscript {
 ```
 #### 2.app/build.gradle
 应用kotlin-kapt
-```
+```java
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
@@ -49,7 +49,7 @@ apply plugin: 'kotlin-kapt'
 ```
 #### 3.Project/gradle.properties
 
-```
+```java
 kotlin.incremental=false
 ```
 
@@ -59,7 +59,7 @@ kotlin.incremental=false
 打开布局文件，选中根布局的 ViewGroup，按住 Alt + 回车键，点击 “Convert to data binding layout”，就可以生成 DataBinding 需要的布局规则  
 ![image](http://note.youdao.com/yws/public/resource/fc6b701fcc36c032670d422e1a3c6889/xmlnote/21E7A7B74134450D84F7A5E1DB236B36/43136)  
 生成后的diam如下
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -89,7 +89,7 @@ kotlin.incremental=false
 和原始布局的区别在于多出了一个 layout 标签将原布局包裹了起来，data 标签用于声明要用到的变量以及变量类型，要实现 MVVM 的 ViewModel 就需要把数据（Model）与 UI（View）进行绑定，data 标签的作用就像一个桥梁搭建了 View 和 Model 之间的通道
 ### 2、声明一个modle
 这里先来声明一个 Modle
-```
+```kotlin
 package com.example.demo003_databing.model
 
 /**
@@ -101,7 +101,7 @@ data class User(var name:String,var password:String)
 ```
 ### 3、data标签设置值
 在 data 标签里声明要使用到的变量名、类的全路径。
-```
+```xml
 <data>
         <variable
             name="userInfo"
@@ -109,7 +109,7 @@ data class User(var name:String,var password:String)
     </data>
 ```
 如果 User 类型要多处用到，也可以直接将之 import 进来，这样就不用每次都指明整个包名路径了，而 java.lang.* 包中的类会被自动导入，所以可以直接使用
-```
+```xml
 <data>
         <import type="com.example.demo003_databing.model.User"/>
         <variable
@@ -118,7 +118,7 @@ data class User(var name:String,var password:String)
     </data>
 ```
 如果存在 import 的类名相同的情况，可以使用 alias 指定别名
-```
+```xml
     <data>
         <import type="com.example.demo003_databing.model.User" />
         <import
@@ -136,7 +136,7 @@ data class User(var name:String,var password:String)
 这里声明了一个 User 类型的变量 userInfo，我们要做的就是使这个变量与两个 TextView 控件挂钩，通过设置 userInfo 的变量值同时使 TextView 显示相应的文本
 完整的布局代码如下所示
 
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -171,7 +171,7 @@ data class User(var name:String,var password:String)
 通过 @{userInfo.name} 使 TextView 引用到相关的变量，DataBinding 会将之映射到相应的 getter 方法  
 之后可以在 Activity 中通过 DataBindingUtil 设置布局文件，省略原先 Activity 的 setContentView() 方法，并为变量 userInfo 赋值
 
-```
+```kotlin
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -187,16 +187,16 @@ class MainActivity : AppCompatActivity() {
 ## 3.其他功能
 ### 1、设置预览效果
 由于 @{userInfo.name}在布局文件中并没有明确的值，所以在预览视图中什么都不会显示，不便于观察文本的大小和字体颜色等属性，此时可以为之设定默认值（文本内容或者是字体大小等属性都适用），默认值将只在预览视图中显示，且默认值不能包含引号
-```
+```xml
 android:text="@{userInfo.name,default=预览效果}"
 ```
 此外，也可以通过 ActivityMain2Binding 直接获取到指定 ID 的控件
 
-```
+```xml
 activityMainBinding.tvUserName.text="小明"
 ```
 每个数据绑定布局文件都会生成一个绑定类，ViewDataBinding 的实例名是根据布局文件名来生成，将之改为首字母大写的驼峰命名法来命名，并省略布局文件名包含的下划线。控件的获取方式类似，但首字母小写
-```
+```xml
     <data class="CustomBinding">
 
     </data>
@@ -205,7 +205,7 @@ activityMainBinding.tvUserName.text="小明"
 ### 2、fragment和recyclerview中使用
 Databinding 同样是支持在 Fragment 和 RecyclerView 中使用 。例如，可以看 Databinding 在 Fragment 中的使用
 
-```
+```kotlin
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         FragmentBlankBinding fragmentBlankBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_blank, container, false);
@@ -224,7 +224,7 @@ BaseObservable 提供了 notifyChange() 和 notifyPropertyChanged()两个方法
 - notifyChange():刷新所有的值域，
 - notifyPropertyChanged():后者则只更新对应BR的 flag，该BR的生成通过注释 @Bindable 生成，可以通过BRnotify特定属性关联的视图
 
-```
+```kotlin
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import com.example.demo003_databing.BR
@@ -260,7 +260,7 @@ class Goods : BaseObservable() {
 ```
 build项目后就会生成BR类
 
-```
+```kotlin
 public class BR {
   public static final int _all = 0;
 
@@ -276,7 +276,7 @@ public class BR {
 
 添加两个按钮用于改变 goods 变量的三个属性值。当中涉及的按钮点击事件绑定
 
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -324,7 +324,7 @@ public class BR {
 </layout>
 ```
 使用
-```
+```kotlin
 class Test2Activity : AppCompatActivity() {
     lateinit var goods: Goods
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -362,7 +362,7 @@ nameView的刷新没有同时刷新priceView，而detailsView刷新的同时也�
 实现了 Observable 接口的类允许注册一个监听器，当可观察对象的属性更改时就会通知这个监听器  
 propertyId 就用于标识特定的字段
 
-```
+```kotlin
 //监听可观察对象的属性改变
         goods.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {
             override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
@@ -383,7 +383,7 @@ propertyId 就用于标识特定的字段
 ObservableField 可以理解为官方对BaseObservable中字段的注解和刷新等操作的封装，官方原生提供了对基本数据类型的封装，例如ObservableBoolean、ObservableByte、ObservableChar、ObservableShort、ObservableInt、ObservableLong、ObservableFloat、ObservableDouble以及ObservableParcelable，也可通过ObservableField 泛型来申明其他类型  
 #### ObservableField源码
 
-```
+```kotlin
 public class ObservableField<T> extends BaseObservableField implements Serializable {
     static final long serialVersionUID = 1L;
     private T mValue;
@@ -454,7 +454,7 @@ class ObservableGoods(name: String, details: String, price: Float) {
 
 }
 ```
-```
+```kotlin
 abstract class BaseObservableField extends BaseObservable {
     public BaseObservableField() {
     }
@@ -479,7 +479,7 @@ abstract class BaseObservableField extends BaseObservable {
 ```
 
 使用
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -588,7 +588,7 @@ abstract class BaseObservableField extends BaseObservable {
 </layout>
 ```
 
-```
+```kotlin
 class Test2Activity : AppCompatActivity() {
     lateinit var goods: Goods
     lateinit var observableGoods: ObservableGoods
@@ -663,7 +663,7 @@ class Test2Activity : AppCompatActivity() {
 ### 3.ObservableCollection
 dataBinding也提供了包装类用于替代原生的 List 和 Map，分别是ObservableList 和 ObservableMap,当其包含的数据发生变化时，绑定的视图也会随之进行刷新
 
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -729,7 +729,7 @@ dataBinding也提供了包装类用于替代原生的 List 和 Map，分别是Ob
 ```
 activity代码
 
-```
+```kotlin
 override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         dataBindingUtil =
@@ -758,7 +758,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 ## 5、双向数据绑定
 双向绑定的意思即为当数据改变时刷新视图，而视图改变时也可以改变数据
 
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -786,7 +786,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 </layout>
 ```
 activity代码
-```
+```kotlin
 /**
  * @author: Luuuzi
  * @date: 2020-12-08
@@ -807,14 +807,14 @@ class Test3Activity : AppCompatActivity() {
 严格意义上来说，事件绑定也是一种变量绑定，只不过设置的变量是回调接口而已
 事件绑定可用于以下多种回调事件
 
-```
+```xml
 android:onClick //点击事件
 android:onLongClick //长按事件
 android:afterTextChanged //数据改变之后
 android:onTextChanged //
 ```
 xml设置事件对象和数据
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -860,7 +860,7 @@ xml设置事件对象和数据
 </layout>
 ```
 在 Activity 内部新建一个 UserPresenterClick 类来声明 onClick() 和 afterTextChanged() 事件相应的回调方法
-```
+```kotlin
 /**
  * @author: Luuuzi
  * @date: 2020-12-08
@@ -908,7 +908,7 @@ class Test4Activity : AppCompatActivity() {
 ## 7、使用类方法
 首先定义一个静态方法
 
-```
+```kotlin
 /**
  * @author: Luuuzi
  * @date: 2020-12-09
@@ -924,7 +924,7 @@ class StringUtils {
 }
 ```
 xml
-```
+```xml
 <!--1、导入类-->
 <import type="com.example.demo003_databing.util.StringUtils"/>
 
@@ -965,7 +965,7 @@ DataBinding 支持在布局文件中使用以下运算符、表达式和关键�
 #### 2、Null Coalescing
 空合并运算符 ?? 会取第一个不为 null 的值作为返回值
 
-```
+```xml
  <TextView
      android:layout_width="match_parent"
      android:layout_height="wrap_content"
@@ -973,13 +973,13 @@ DataBinding 支持在布局文件中使用以下运算符、表达式和关键�
 ```
 等价于
 
-```
+```xml
     android:text="@{user.name != null ? user.name : user.password}"
 ```
 #### 3、属性控制
 可以通过变量值来控制 View 的属性
 
-```
+```xml
  <TextView
      android:layout_width="match_parent"
      android:layout_height="wrap_content"
@@ -994,7 +994,7 @@ DataBinding 也会自动帮助我们避免空指针异常
 对于 include 的布局文件，一样是支持通过 dataBinding 来进行数据绑定，此时一样需要在待 include 的布局中依然使用 layout 标签，声明需要使用到的变量  
 
 layout_view.xml
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -1030,7 +1030,7 @@ layout_view.xml
 </layout>
 ```
 activity_test5.xml
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:bind="http://schemas.android.com/apk/res-auto">
@@ -1068,7 +1068,7 @@ activity_test5.xml
 </layout>
 ```
 Test5Activity
-```
+```kotlin
 /**
  * @author: Luuuzi
  * @date: 2020-12-09
@@ -1091,7 +1091,7 @@ class Test5Activity : AppCompatActivity() {
 dataBinding 一样支持 ViewStub 布局  
 
 layout_stub.xml
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -1127,7 +1127,7 @@ layout_stub.xml
 </layout>
 ```
 activity_test5.xml
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -1165,7 +1165,7 @@ activity_test5.xml
 </layout>
 ```
 
-```
+```kotlin
 class Test5Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -1212,7 +1212,7 @@ BindingAdapter 这个注解用于支持自定义属性，或者是修改原有�
 
 ### 自定义属性
 xml
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:bind="http://schemas.android.com/apk/res-auto">
@@ -1255,7 +1255,7 @@ xml
 </layout>
 ```
 java
-```
+```xml
 /**
  * @author: Luuuzi
  * @date: 2020-12-15
@@ -1299,7 +1299,7 @@ fun loadImage(imageView: ImageView, cc: String) {
 ### 修改原生属性
 以下方法会将布局文件中所有以android:text='@{String}'方式引用到的String类型变量加上后缀-Button
 ```
-/**
+/**kotlin
  * 修改原生属性,但是对java代码设置无效
  */
 @BindingAdapter("android:text")
@@ -1333,7 +1333,7 @@ dataBindingUtil.button.text = "修改内容${Random.nextInt(1000)}"
 ==和BindingAdapter类似，以下方法会将布局文件中所有以@{String}方式引用到的String类型变量加上后缀-conversionString==
 
 java
-```
+```kotlin
 /**
  * 数据转换
  */
@@ -1343,7 +1343,7 @@ fun conversionString(text: String):String{
 }
 ```
 xml
-```
+```xml
         <!--覆盖原生属性：android:text，对应的属性值必须为'@{"XXX"}'这种格式才有效-->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button"
@@ -1363,7 +1363,7 @@ Button 来说，BindingAdapter和BindingConversion同时生效了，且BindingCo
 
 ### 转换数据类型
 kotlin 
-```
+```kotlin
 /**
  * 类型转换 将string转换成drawable
  */
@@ -1394,7 +1394,7 @@ fun conversionType2(text: String): Int {
 ```
 
 xml
-```
+```xml
 <!--        类型转换
         background使用：conversionType
         textColor使用：conversionType-->
@@ -1420,7 +1420,7 @@ xml
 - 为了和 variable 标签的尖括号区分开，在声明Lsit<String>之类的数据类型时，需要使用尖括号的转义字符
 
 
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
@@ -1484,16 +1484,16 @@ xml
 ## 13、资源引用
 dataBinding 支持对尺寸和字符串这类资源的访问  
 dimens.xml
-```
+```xml
     <dimen name="paddingBig">190dp</dimen>
     <dimen name="paddingSmall">150dp</dimen>
 ```
 strings.xml
-```
+```xml
     <string name="format">%s is %s</string>
 ```
 xml
-```
+```xml
     <data>
         <variable
             name="flag"
