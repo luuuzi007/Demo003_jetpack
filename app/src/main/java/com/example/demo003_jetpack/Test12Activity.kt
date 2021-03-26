@@ -31,6 +31,7 @@ class Test12Activity : AppCompatActivity() {
             this,
             ViewModelProvider.NewInstanceFactory()
         ).get(StudentViewModel::class.java)
+        //4、数据改变后更新界面
         viewModel.getStudents().observe(this, object : Observer<PagedList<StudentBean>> {
             override fun onChanged(t: PagedList<StudentBean>?) {
                 adapter.submitList(t)
@@ -39,6 +40,4 @@ class Test12Activity : AppCompatActivity() {
         activityTest12Binding.rlvPaging.adapter = adapter
 
     }
-
-
 }
