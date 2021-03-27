@@ -16,7 +16,9 @@ open class StudentDataSource : PositionalDataSource<StudentBean>() {
         params: LoadInitialParams,
         callback: LoadInitialCallback<StudentBean>
     ) {
-        callback.onResult(getStudents(0, 10), 0, 1000)
+        //暂时没发现有什么区别
+        callback.onResult(getStudents(0, 10), 0, 30)//带总数的回调
+//        callback.onResult(getStudents(0, 10), 0)//不带总数的回调
     }
 
     /**

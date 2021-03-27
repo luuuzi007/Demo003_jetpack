@@ -38,6 +38,5 @@ class Test12Activity : AppCompatActivity() {
             }
         })
         activityTest12Binding.rlvPaging.adapter = adapter
-
     }
 }

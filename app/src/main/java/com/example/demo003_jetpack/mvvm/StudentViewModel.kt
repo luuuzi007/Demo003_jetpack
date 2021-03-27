@@ -25,7 +25,7 @@ class StudentViewModel : ViewModel() {
             .setInitialLoadSizeHint(30)       //首次加载的数量
             .setPrefetchDistance(5)     //距离底部还有多少条数据时开始预加载
             .build()
-        //配置PageList，将Factory和属性关联起来
+        //创建liveData对象。配置PageList，将Factory和属性关联起来
         listLiveData = LivePagedListBuilder<Int, StudentBean>(factory, build).build()
     }
     //2、返回数据

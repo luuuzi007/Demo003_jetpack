@@ -17,6 +17,7 @@ import com.example.demo003_jetpack.model.StudentBean
  */
 class StudentAdapter : PagedListAdapter<StudentBean, StudentAdapter.ViewHolder> {
     companion object {
+        //1、定义比较逻辑
         private val dief_student: DiffUtil.ItemCallback<StudentBean> =
             object : DiffUtil.ItemCallback<StudentBean>() {
                 override fun areItemsTheSame(oldItem: StudentBean, newItem: StudentBean): Boolean {
@@ -33,7 +34,7 @@ class StudentAdapter : PagedListAdapter<StudentBean, StudentAdapter.ViewHolder> 
 
 
     }
-
+    //2、构建方法设置比较属性
     constructor() : super(dief_student)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -67,6 +68,4 @@ class StudentAdapter : PagedListAdapter<StudentBean, StudentAdapter.ViewHolder> 
         }
 
     }
-
-
 }
