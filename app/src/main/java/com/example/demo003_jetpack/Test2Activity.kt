@@ -100,7 +100,7 @@ class Test2Activity : AppCompatActivity() {
             observableGoods.name2.set("李四:$toFloat")
         }
 
-        //会更新所有属性
+        //更新details2和price2属性
         fun clickDetails() {
             Log.i("aaa", "clickDetails2")
             val toFloat = Random().nextInt(100).toFloat()

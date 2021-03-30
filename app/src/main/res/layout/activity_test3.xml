@@ -2,24 +2,35 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-        <import type="com.example.demo003_databing.model.ObservableGoods"/>
+
+        <import type="com.example.demo003_jetpack.model.User2" />
+
         <variable
-            name="goods"
-            type="ObservableGoods" />
+            name="user2"
+            type="User2" />
+
+        <import type="com.example.demo003_databing.Test3Activity.UserPresenter" />
+
+        <variable
+            name="persenter"
+            type="UserPresenter" />
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <TextView
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_name2"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="@{goods.name2}"
-            android:background="#ccc"/>
+            android:background="#ccc"
+            android:text="@{user2.name2}" />
+
         <androidx.appcompat.widget.AppCompatEditText
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="@={goods.name2}"/>
+            android:afterTextChanged="@{persenter.afterTextChanged}" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>

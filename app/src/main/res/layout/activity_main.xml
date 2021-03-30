@@ -15,7 +15,7 @@
         android:layout_marginTop="3dp"
         android:background="#ccc"
         android:gravity="center"
-        android:text="单项数据绑定" />
+        android:text="databing基本使用和单项数据绑定" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv2"
