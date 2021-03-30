@@ -28,7 +28,8 @@ class Test3Activity : AppCompatActivity() {
         private val user: User2,
         private val binding: ActivityTest3Binding
     ) {
-        //当内容改变后才将数据设置给databinding
+        //单向数据绑定，Ui内容改变后改变databinding数据
+        // 当内容改变后才将数据设置给databinding
         fun afterTextChanged(s: Editable) {
             user.name2 = s.toString()
             //设置数据给databinding

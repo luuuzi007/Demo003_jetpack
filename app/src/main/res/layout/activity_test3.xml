@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
+<!--        单向数据绑定，databinding数据改变后，更新UI-->
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_name2"
             android:layout_width="match_parent"
