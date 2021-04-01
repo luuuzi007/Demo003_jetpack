@@ -4,9 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.example.demo003_jetpack.Test10Activity
-import com.example.demo003_jetpack.Test11Activity
-import com.example.demo003_jetpack.Test12Activity
+import com.example.demo003_jetpack.activity.Test10Activity
+import com.example.demo003_jetpack.activity.Test11Activity
+import com.example.demo003_jetpack.activity.Test12Activity
+import com.example.demo003_jetpack.activity.Test13Activity
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
@@ -29,6 +30,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         tv9.setOnClickListener(this)
         tv10.setOnClickListener(this)
         tv11.setOnClickListener(this)
+        tv13.setOnClickListener(this)
 
     }
 
@@ -46,7 +48,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.tv8 -> startActivity(Intent(this@MainActivity, Test9Activity::class.java))
             R.id.tv9 -> startActivity(Intent(this@MainActivity, Test10Activity::class.java))
             R.id.tv10 -> startActivity(Intent(this@MainActivity, Test11Activity::class.java))
-            R.id.tv11->startActivity(Intent().apply {setClass(this@MainActivity, Test12Activity::class.java) })
+            R.id.tv11 -> startActivity(Intent().apply {
+                setClass(
+                    this@MainActivity,
+                    Test12Activity::class.java
+                )
+            })
+            R.id.tv13 -> startActivity(Intent(this@MainActivity, Test13Activity::class.java))
         }
     }
 }

@@ -103,5 +103,12 @@
         android:text="paging组件"
         android:gravity="center"
         android:background="#ccc"/>
-
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv13"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="3dp"
+        android:text="paging组件2"
+        android:gravity="center"
+        android:background="#ccc"/>
 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,4 +1,4 @@
-package com.example.demo003_jetpack
+package com.example.demo003_jetpack.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
