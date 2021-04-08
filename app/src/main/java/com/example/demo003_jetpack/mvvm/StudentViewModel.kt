@@ -21,7 +21,7 @@ class StudentViewModel : ViewModel() {
         //配置第一次默认加载多少数据，之后每一次加载多少数据，如何加载 等等
         val build = PagedList.Config.Builder()
             .setPageSize(10)                  //配置分页加载的数量
-            .setEnablePlaceholders(false)     //配置是否启动PlaceHolders
+            .setEnablePlaceholders(false)     ///设置控件占位
             .setInitialLoadSizeHint(30)       //首次加载的数量
             .setPrefetchDistance(5)     //距离底部还有多少条数据时开始预加载
             .build()
