@@ -18,10 +18,11 @@ import com.example.demo003_jetpack.model.DataX
 class ArticleAdapter : PagedListAdapter<DataX, ArticleAdapter.Holder> {
     companion object {
         val dief: DiffUtil.ItemCallback<DataX> = object : DiffUtil.ItemCallback<DataX>() {
+            //检测两个对象是否代表同一个Item
             override fun areItemsTheSame(oldItem: DataX, newItem: DataX): Boolean {
                 return oldItem.courseId == newItem.courseId
             }
-
+            //检测两个Item是否存在不一样的数据
             override fun areContentsTheSame(oldItem: DataX, newItem: DataX): Boolean {
                 return oldItem == newItem
             }
