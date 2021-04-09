@@ -38,7 +38,7 @@ class ArticleAdapter : PagedListAdapter<DataX, ArticleAdapter.Holder> {
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         val item = getItem(position)
-        holder.tv_article.text=item?.chapterName
+        holder.tv_article.text = "第$position 项:${item?.title}"
     }
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -48,5 +48,4 @@ class ArticleAdapter : PagedListAdapter<DataX, ArticleAdapter.Holder> {
             tv_article = itemView.findViewById(R.id.tv_article)
         }
     }
-
 }

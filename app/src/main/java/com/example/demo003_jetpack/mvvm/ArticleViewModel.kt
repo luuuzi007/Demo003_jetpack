@@ -17,8 +17,8 @@ class ArticleViewModel : ViewModel() {
 
     init {
         val build = PagedList.Config.Builder()
-            .setPageSize(10)
-            .setEnablePlaceholders(false)
+            .setPageSize(11)
+            .setEnablePlaceholders(true)
             .setInitialLoadSizeHint(30)
             .setPrefetchDistance(5)
             .build()

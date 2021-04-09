@@ -12,6 +12,8 @@ import com.example.demo003_jetpack.adapter.ArticleAdapter
 import com.example.demo003_jetpack.model.DataX
 import com.example.demo003_jetpack.mvvm.ArticleViewModel
 import kotlinx.android.synthetic.main.activity_test13.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 /**
  * @author: Luuuzi
@@ -40,10 +42,9 @@ class Test13Activity : AppCompatActivity() {
 //        }
         viewModel.articleList.observe(this,object :Observer<PagedList<DataX>>{
             override fun onChanged(t: PagedList<DataX>?) {
-//                articleAdapter.submitList(t)
+                articleAdapter.submitList(t)
                 Log.i("aaa","t.size:${t?.size}")
             }
         })
-
     }
 }
