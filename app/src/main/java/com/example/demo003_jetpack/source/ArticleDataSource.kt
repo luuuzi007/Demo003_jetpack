@@ -44,8 +44,8 @@ class ArticleDataSource : PageKeyedDataSource<Int, DataX>() {
         scope.launch(Dispatchers.IO) {
             page = 1
             val articleBean = RetrofitNetwork.getArticleList(page)
-            if (articleBean.errorCode==0) {
-                val datas = articleBean.data.datas
+            if (articleBean?.errorCode==0) {
+                val datas = articleBean?.data?.datas
                 Log.i("aaa", "第一次加载.size:${datas.size}")
                 /**
                  * 第一个参数会交给PagedList，
@@ -67,8 +67,8 @@ class ArticleDataSource : PageKeyedDataSource<Int, DataX>() {
         val scope = CoroutineScope(job)
         scope.launch(Dispatchers.IO) {
             val articleBean = RetrofitNetwork.getArticleList(params.key)
-            if (articleBean.errorCode==0){
-                val datas = articleBean.data.datas
+            if (articleBean?.errorCode==0){
+                val datas = articleBean?.data?.datas
                 Log.i("aaa", "加载更多.size:${datas.size}")
                 /**
                  * 第一个参数会交给PagedList，第二个参数会传给下一次调用loadAfter方法的params的key属性

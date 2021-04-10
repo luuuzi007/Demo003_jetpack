@@ -30,8 +30,13 @@ object RetrofitNetwork {
     }
 
     //获取文章列表
-    suspend fun getArticleList(page: Int): ArticleBean {
-        return mApi.getArticleList(page).await()
+    suspend fun getArticleList(page: Int): ArticleBean? {
+        try {//捕获异常，业务逻辑自己处理
+            return mApi.getArticleList(page).await()
+        }catch (e:Exception){
+            e.printStackTrace()
+        }
+        return null
     }
 
     //3、为call增加扩展函数await,实现网络请求
