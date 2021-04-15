@@ -30,6 +30,7 @@
         <activity android:name="com.example.demo003_jetpack.activity.Test11Activity" />
         <activity android:name="com.example.demo003_jetpack.activity.Test12Activity" />
         <activity android:name="com.example.demo003_jetpack.activity.Test13Activity" />
+        <activity android:name="com.example.demo003_jetpack.activity.Test14Activity" />
     </application>
 
 </manifest>

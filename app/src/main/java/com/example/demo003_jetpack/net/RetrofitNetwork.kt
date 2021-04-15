@@ -40,7 +40,7 @@ object RetrofitNetwork {
     }
 
     //3、为call增加扩展函数await,实现网络请求
-    private suspend fun <T> Call<T>.await(): T {
+    private suspend inline fun <T> Call<T>.await(): T {
         return suspendCoroutine<T> {
             this.enqueue(object : Callback<T> {
                 override fun onFailure(call: Call<T>, t: Throwable) {

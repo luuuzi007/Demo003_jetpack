@@ -1,114 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".Test1Activity">
+    android:layout_height="match_parent">
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".Test1Activity">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv1"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="3dp"
-        android:background="#ccc"
-        android:gravity="center"
-        android:text="databing基本使用和单项数据绑定" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="3dp"
+            android:background="#ccc"
+            android:gravity="center"
+            android:text="databing基本使用和单项数据绑定" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv2"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="3dp"
-        android:background="#ccc"
-        android:gravity="center"
-        android:text="双向数据绑定" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="3dp"
+            android:background="#ccc"
+            android:gravity="center"
+            android:text="双向数据绑定" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv3"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="3dp"
-        android:background="#ccc"
-        android:gravity="center"
-        android:text="事件绑定" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv3"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="3dp"
+            android:background="#ccc"
+            android:gravity="center"
+            android:text="事件绑定" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv4"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="3dp"
-        android:background="#ccc"
-        android:gravity="center"
-        android:text="include和viewstub" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv4"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="3dp"
+            android:background="#ccc"
+            android:gravity="center"
+            android:text="include和viewstub" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv5"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="3dp"
-        android:background="#ccc"
-        android:gravity="center"
-        android:text="其他属性" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv5"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="3dp"
+            android:background="#ccc"
+            android:gravity="center"
+            android:text="其他属性" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv6"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="3dp"
-        android:background="#ccc"
-        android:gravity="center"
-        android:text="bindingAdapter" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv6"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="3dp"
+            android:background="#ccc"
+            android:gravity="center"
+            android:text="bindingAdapter" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv7"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="3dp"
-        android:background="#ccc"
-        android:gravity="center"
-        android:text="LiveData" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv7"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="3dp"
+            android:background="#ccc"
+            android:gravity="center"
+            android:text="LiveData" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv8"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="3dp"
-        android:background="#ccc"
-        android:gravity="center"
-        android:text="mvvm实现一个图片查看器" />
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv9"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="3dp"
-        android:text="Android KTX"
-        android:gravity="center"
-        android:background="#ccc"/>
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv10"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="3dp"
-        android:text="协程"
-        android:gravity="center"
-        android:background="#ccc"/>
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv11"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="3dp"
-        android:text="paging组件"
-        android:gravity="center"
-        android:background="#ccc"/>
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv13"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="3dp"
-        android:text="paging组件2"
-        android:gravity="center"
-        android:background="#ccc"/>
-</androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv8"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="3dp"
+            android:background="#ccc"
+            android:gravity="center"
+            android:text="mvvm实现一个图片查看器" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv9"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="3dp"
+            android:background="#ccc"
+            android:gravity="center"
+            android:text="Android KTX" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv10"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="3dp"
+            android:background="#ccc"
+            android:gravity="center"
+            android:text="协程" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv11"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="3dp"
+            android:background="#ccc"
+            android:gravity="center"
+            android:text="paging组件" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv13"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="3dp"
+            android:background="#ccc"
+            android:gravity="center"
+            android:text="paging组件2" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv14"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="3dp"
+            android:background="#ccc"
+            android:gravity="center"
+            android:text="Lifecycles"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</ScrollView>
